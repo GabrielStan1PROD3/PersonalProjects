@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="BlackJack.App.View.LoseMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BlackJack.App.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid>
+            <Rectangle Fill="Red" Opacity="0.5" />
+            <DockPanel >
+                <Button Command="{Binding StopButtonCommand}"
+            Background="Red" BorderBrush="DarkRed" BorderThickness="6"
+            Height="35"  Margin="20 0 0 20" HorizontalAlignment="Left" 
+            VerticalAlignment="Bottom" Content="Restart" Width="80" />
+                <Button  Command ="{Binding NextButtonCommand}" Background="Green"
+             BorderBrush="DarkGreen" BorderThickness="6"
+             Height="35" Margin="0 0 20 20" HorizontalAlignment="Right" 
+             VerticalAlignment="Bottom"  Content="Play again" Width="80" />
+            </DockPanel>
+            <TextBlock  Foreground="White" FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Text="YOU LOOSE"/>
+        </Grid>
+    </Grid>
+</UserControl>

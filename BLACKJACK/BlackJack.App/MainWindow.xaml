@@ -1,0 +1,16 @@
+﻿<Window x:Class="BlackJack.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackJack.App" 
+        xmlns:control="clr-namespace:BlackJack.App.Control"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1600" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush  ImageSource="/blackjack-background (1).png" />
+        </Grid.Background>
+        <control:BlackJackLayoutControl/>
+    </Grid>
+</Window>

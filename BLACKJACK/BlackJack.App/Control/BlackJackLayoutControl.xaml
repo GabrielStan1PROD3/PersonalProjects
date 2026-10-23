@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="BlackJack.App.Control.BlackJackLayoutControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BlackJack.App.Control"
+             xmlns:view="clr-namespace:BlackJack.App.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1400">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="Transparent" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3.5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--LeftSide-->
+        <GroupBox Header="Game" Foreground="White" Grid.RowSpan="3">
+            <StackPanel>
+                <Button  Visibility="{Binding IsNewGameButtonPressed , Converter={StaticResource IsNewGamePressed}}" x:Name="myBtn" Command="{Binding NewGameCommand}"  Background="LawnGreen" Width="200" Margin="0 20 0 15" Height="35"  Content="New Game"/>
+                <Separator/>
+           
+                <StackPanel Height="80" Orientation="Vertical">
+                    <Label Content="Credits :"  Foreground="White"/>
+                    <TextBlock FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Credits}" Foreground="White"/>
+                    
+                </StackPanel>
+                <Separator/>
+
+            </StackPanel>
+
+            
+        </GroupBox>
+       
+        <!--End-->
+        
+        
+        <GroupBox Header="Player" Foreground="White" Grid.Column="1" Grid.Row="3">
+            <ItemsControl ItemsSource="{Binding PlayerCards}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image 
+                Width="150" 
+                Height="180" 
+                Margin="10 5 10 5"
+                Source="{Binding CardImage}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </GroupBox>
+
+
+        <view:DeckView
+            x:Name="DeckView"
+            Visibility="{Binding IsDeckVisible  , Converter={StaticResource CanShowDeckView}}"
+            Grid.Column="1"
+            Grid.Row="1"
+            DataContext="{Binding}"
+            />
+        <view:WinMessage Visibility="{Binding PlayerWin ,Converter={StaticResource WinnerBool}}" Grid.Row="1" Grid.Column="2"/>
+        <view:LoseMessage Visibility="{Binding BotWin ,Converter={StaticResource LooserBool}}" Grid.Row="1" Grid.Column="2"/>
+        <view:DrawMessage Visibility="{Binding IsDraw , Converter= {StaticResource DrawBool}}" Grid.Row="1" Grid.Column="2"/>
+        <GroupBox Header="Bank" Foreground="White" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding BotCards}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image 
+                Width="150" 
+                Height="180" 
+                Margin="10 5 10 5"
+                Source="{Binding CardImage}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
+
+    </Grid>
+</UserControl>
